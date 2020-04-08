@@ -2,11 +2,13 @@
 
 package main;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.image.BufferedImage;
+import neuralnet.NeuralNet;
+import neuralnet.math.IActivationFunction;
+import neuralnet.math.Linear;
+import neuralnet.math.RandomNumberGenerator;
+import neuralnet.math.Sigmoid;
+
 import java.io.File;
-import java.io.IOException;
 
 public class Main {
 
@@ -26,6 +28,7 @@ public class Main {
         System.out.println("Numar total de imagini: " + counter);
     }
 
+    /* main procsare imagini
     public static void main(String[] args) throws IOException{
 
         //citire o anumita imagine dupa calea data
@@ -107,5 +110,33 @@ public class Main {
         readImagesPath("C:\\Users\\radui\\Desktop\\p2 - grigore\\baza de date animale\\scoiattolo");
         System.out.println();
 
+    }
+     */
+
+    //main console test
+
+    public static void main(String[] args) {
+        RandomNumberGenerator.seed=0;
+
+        int numberOfInputs=2;
+        int numberOfOutputs=1;
+        int[] numberOfHiddenNeurons= { 3 };
+        IActivationFunction[] hiddenAcFnc = { new Sigmoid(1.0) } ;
+        Linear outputAcFnc = new Linear(1.0);
+        NeuralNet nn = new NeuralNet(numberOfInputs,numberOfOutputs, numberOfHiddenNeurons,hiddenAcFnc,outputAcFnc);
+
+        double [] neuralInput = { 1.5 , 0.5 };
+
+        double [] neuralOutput;
+        nn.setInputs(neuralInput);
+        nn.calc();
+        neuralOutput=nn.getOutputs();
+
+        neuralInput[0] = 1.0;
+        neuralInput[1] = 2.1;
+
+        nn.setInputs(neuralInput);
+        nn.calc();
+        neuralOutput=nn.getOutputs();
     }
 }
