@@ -7,9 +7,8 @@ public class RandomNumberGenerator { //random double precision numbers according
     public static Random r;
 
     public static double GenerateNext(){
-        if(r==null){
-            r=new Random(seed);
-        }
+        if(r==null)
+            r = new Random(seed);
         return r.nextDouble(); //returns a newly random number
     }
 

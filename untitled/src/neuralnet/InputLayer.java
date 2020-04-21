@@ -1,6 +1,7 @@
 package neuralnet;
 
 import neuralnet.math.Linear;
+
 import java.util.ArrayList;
 
 public class InputLayer extends NeuralLayer {
@@ -55,5 +56,5 @@ public class InputLayer extends NeuralLayer {
             }
         }
     }
-
+    
 }

@@ -17,4 +17,10 @@ public class Linear implements IActivationFunction {
     public double calc(double x){
         return a*x;
     }
+
+    @Override
+    public double derivative(double x){
+        return a;
+    }
+    
 }

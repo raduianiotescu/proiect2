@@ -4,7 +4,8 @@ import neuralnet.math.IActivationFunction;
 
 public class HiddenLayer extends NeuralLayer {
 
-    public HiddenLayer(int numberofneurons, IActivationFunction iaf, int numberofinputs){
+    public HiddenLayer(int numberofneurons,IActivationFunction iaf,
+            int numberofinputs){
         super(numberofneurons,iaf);
         numberOfInputs=numberofinputs;
         init();
@@ -23,5 +24,5 @@ public class HiddenLayer extends NeuralLayer {
         if(next.previousLayer!=this)
             next.setPreviousLayer(this);
     }
-
+    
 }

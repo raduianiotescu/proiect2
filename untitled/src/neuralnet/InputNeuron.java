@@ -21,5 +21,5 @@ public class InputNeuron extends Neuron {
             this.weight.add(0.0);
         }
     }
-
+    
 }

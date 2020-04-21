@@ -7,4 +7,14 @@ public class Step implements IActivationFunction {
         if(x<0) return 0.0;
         else return 1.0;
     }
+
+    @Override
+    public double derivative(double x){
+        if(x==0)
+            return Double.MAX_VALUE;
+        else
+            return 0.0;
+
+    }
+    
 }

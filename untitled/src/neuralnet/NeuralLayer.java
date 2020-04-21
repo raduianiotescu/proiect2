@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public abstract class NeuralLayer { //gruparea neuronilor cu ajutorul unei clase abstracte
 
-    protected int numberOfNeuronsInLayer;
-    private ArrayList<Neuron> neuron;
-    protected IActivationFunction activationFnc;
+    protected int numberOfNeuronsInLayer; //nr de neuroni din layer
+    private ArrayList<Neuron> neuron; //Array de tip Neuron
+    protected IActivationFunction activationFnc; //actv fnc
     protected NeuralLayer previousLayer;
     protected NeuralLayer nextLayer;
     protected ArrayList<Double> input;
@@ -51,7 +51,7 @@ public abstract class NeuralLayer { //gruparea neuronilor cu ajutorul unei clase
         nextLayer=layer;
     }
 
-    protected void init(){
+    protected void init(){ //initializare cu ajutorul actv fnc
         if(numberOfNeuronsInLayer>=0){
             for(int i=0;i<numberOfNeuronsInLayer;i++){
                 try{
@@ -71,7 +71,7 @@ public abstract class NeuralLayer { //gruparea neuronilor cu ajutorul unei clase
         this.input=inputs;
     }
 
-    protected void calc(){
+    protected void calc(){ //calculeaza outputul
         if(input!=null && neuron!=null){
             for(int i=0;i<numberOfNeuronsInLayer;i++){
                 neuron.get(i).setInputs(this.input);
@@ -90,7 +90,7 @@ public abstract class NeuralLayer { //gruparea neuronilor cu ajutorul unei clase
         return output;
     }
 
-    protected Neuron getNeuron(int i){
+    public Neuron getNeuron(int i){
         return neuron.get(i);
     }
 
@@ -102,4 +102,9 @@ public abstract class NeuralLayer { //gruparea neuronilor cu ajutorul unei clase
             this.neuron.add(_neuron);
         }
     }
+
+    public Double getWeight(int i,int j){
+        return this.neuron.get(j).getWeight(i);
+    }
+    
 }

@@ -4,11 +4,17 @@ import neuralnet.math.IActivationFunction;
 
 public class OutputLayer extends NeuralLayer {
 
-    public OutputLayer(int numberofneurons, IActivationFunction iaf, int numberofinputs){
+    public OutputLayer(int numberofneurons,IActivationFunction iaf,int numberofinputs){
         super(numberofneurons,iaf);
         numberOfInputs=numberofinputs;
         nextLayer=null;
         init();
+    }
+
+    public OutputLayer(int numberofneurons,IActivationFunction iaf,NeuralLayer _previousLayer){
+        super(numberofneurons,iaf);
+        setPreviousLayer(_previousLayer);
+        numberOfInputs=_previousLayer.getNumberOfNeuronsInLayer();
     }
 
     @Override
@@ -22,5 +28,5 @@ public class OutputLayer extends NeuralLayer {
         if(layer.nextLayer!=this)
             layer.setNextLayer(this);
     }
-
+    
 }
